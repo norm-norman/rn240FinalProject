@@ -1,0 +1,12 @@
+[
+  {"topicId": 0, "value": "brie"},
+  {"topicId": 0, "value": "cheddar"},
+  {"topicId": 0, "value": "swiss"},
+  {"topicId": 0, "value": "provolone"},
+  {"topicId": 0, "value": "muenster"},
+  {"topicId": 1, "value": "cat"},
+  {"topicId": 1, "value": "dog"},
+  {"topicId": 1, "value": "bird"},
+  {"topicId": 1, "value": "horse"},
+  {"topicId": 1, "value": "cow"},
+]
