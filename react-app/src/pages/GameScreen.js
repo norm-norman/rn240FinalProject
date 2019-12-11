@@ -12,29 +12,32 @@ var gameStatus = false;
 var gameEnded = false;
 
 function GameScreen() {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false); // collect from react useState import
 
+  // declare functions to open and close modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  function selectTopic() {
-    console.log(Math.floor(Math.random() * Math.floor(gameTopics.length)));
-    return Math.random(gameTopics.length);
-  }
-
   function pauseTimerCallBack(status) {
+    // update global variables to reflect status change
     pauseTimer = true;
     gameStatus = status;
     gameEnded = true;
-    console.log(gameStatus);
-    handleShow();
+
+    handleShow(); // open modal
   }
 
   return (
     <div className="App">
         <div className="game-header">
           <div className="back-btn">
-            <Button variant="light" size="lg" href="/">Back to Main</Button>
+            <Button
+              variant="light"
+              size="lg"
+              href="/"
+            >
+              Back to Main
+            </Button>
           </div>
           <div className="topic">
             <p>Topic: {gameTopics[instanceTopicId].topic}</p>
@@ -55,9 +58,17 @@ function GameScreen() {
       </div>
       <Modal show={show} onHide={handleClose} animation={false} centered>
         <Modal.Header closeButton>
-          <Modal.Title>{gameStatus ? "You Win!" : "Better luck next time..."}</Modal.Title>
+          <Modal.Title>{
+            gameStatus
+            ? "You Win!"
+            : "Better luck next time..."
+          }</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{gameStatus ? "Congratulations for staying on the Straight Path :)" : "You strayed from the Straight Path :("}</Modal.Body>
+        <Modal.Body>{
+          gameStatus
+          ? "Congratulations for staying on the Straight Path :)"
+          : "You strayed from the Straight Path :("
+        }</Modal.Body>
         <Modal.Footer>
           <Button variant="light" href="/">
             Back to Main
