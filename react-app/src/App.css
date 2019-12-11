@@ -45,10 +45,15 @@
   align-self: center;
 }
 .flex-grid {
-  display: flex;
+      display: flex;
+      flex-wrap: wrap;
+}
+.flex-grid>* {
+  flex: 1 1 160px;
+  margin: 10vh;
 }
 .col {
-  flex: 1;
+
 }
 
 @media (max-width: 400px) {
@@ -59,4 +64,18 @@
 
 p {
   margin-bottom: 0px;
+}
+
+#answers {
+  color: #282c34;
+}
+
+#answers-clicked {
+  color: white;
+}
+
+#answers:hover {
+  color: white;
+  text-decoration: none;
+
 }

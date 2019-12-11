@@ -3,12 +3,20 @@ import React, { Component } from 'react'
 export default class Timer extends Component {
   state = {
   minutes: 0,
-  seconds: 30
+  seconds: 30,
+  pause: false
 }
 
 componentDidMount() {
   this.myInterval = setInterval(() => {
-    const { seconds, minutes } = this.state
+    const { seconds, minutes, pause } = this.state
+
+    this.setState({
+      pause: this.props.pauseTimer
+    })
+    if (pause) {
+      clearInterval(this.myInterval)
+    }
     if (seconds > 0) {
       this.setState(({ seconds }) => ({
         seconds: seconds - 1
@@ -33,7 +41,7 @@ componentWillUnmount() {
 
 
   render() {
-    const { minutes, seconds } = this.state
+    const { minutes, seconds, pause } = this.state
 
     return (
       <div>
@@ -41,7 +49,7 @@ componentWillUnmount() {
         ? <strong><p>Time's Up!</p></strong>
         : <p>Timer: {seconds < 10 ? `0${seconds}` : seconds}</p>
     }
-</div>
+    </div>
 
     )
   }
