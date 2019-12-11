@@ -18,7 +18,8 @@
 }
 
 .game-header {
-  position: absolute;
+  position: sticky;
+  background-color: #282c34;
   top: 0px;
   display: flex;
   flex-direction: row;

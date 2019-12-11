@@ -24,18 +24,17 @@ export default class GameGrid extends React.Component {
     //pick all but one correct and add to final deck
     //pick remainder from other answers
     correctAnswersShuffled.pop();
-    const incorrectItemCount = 5;
+    const incorrectItemCount = 11;
     incorrectAnswersShuffled.splice(incorrectItemCount-1, incorrectAnswersShuffled.length - incorrectItemCount);
 
     const finalDeck = shuffle(correctAnswersShuffled.concat(incorrectAnswersShuffled));
     this.setState({
       finalDeck
     });
-    console.log(finalDeck);
   }
 
   testClick = (choiceTopicId, choiceAnsId) => {
-    if (this.props.instanceTopicId == choiceTopicId) {
+    if (this.props.instanceTopicId == choiceTopicId && !this.props.gameEnded) {
       //if not already clicked
       if (!this.state.correctClickedChoices.includes(choiceAnsId)){
         const index = this.state.finalDeck.findIndex( i => i.answerId == choiceAnsId);
@@ -50,7 +49,7 @@ export default class GameGrid extends React.Component {
             finalDeck: [...items]
         }));
         //pause timer if game is completed
-        {this.state.correctClick >= 3 && this.props.pauseTimerFunction();}
+        {this.state.correctClick >= 3 && this.props.winGameFunction(true);}
 
       }
     }
@@ -65,7 +64,7 @@ render() {
           var cssClass = "";
           item.correctClick ? cssClass = "answers-clicked" : cssClass = "answers";
           return (
-            <a key={item.answerId} id={cssClass} href="#" onClick={() => {this.testClick(item.topicId, item.answerId)}}>{item.value}</a>
+            <a key={item.answerId} id={cssClass} href="#; return false; " onClick={() => {this.testClick(item.topicId, item.answerId)}}>{item.value}</a>
           )
         })}
       </div>

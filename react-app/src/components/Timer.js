@@ -14,9 +14,11 @@ componentDidMount() {
     this.setState({
       pause: this.props.pauseTimer
     })
+
     if (pause) {
       clearInterval(this.myInterval)
     }
+
     if (seconds > 0) {
       this.setState(({ seconds }) => ({
         seconds: seconds - 1
@@ -25,6 +27,7 @@ componentDidMount() {
     if (seconds === 0) {
       if (minutes === 0) {
         clearInterval(this.myInterval)
+        this.props.timeRunoutFunction(false);
       } else {
         this.setState(({ minutes }) => ({
           minutes: minutes - 1,
@@ -35,7 +38,7 @@ componentDidMount() {
   }, 1000)
 }
 
-componentWillUnmount() {
+  componentWillUnmount() {
       clearInterval(this.myInterval)
   }
 
