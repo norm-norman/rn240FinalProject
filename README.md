@@ -8,7 +8,7 @@ This repository contains the codebase for a simple React web app. The purpose of
 
 ## Getting Started
 
-To run this app on your local environment please follow these steps:\
+To run this app on your local environment please follow these steps:
 1. make sure your machine is running Node.JS
 2. clone this repository and navigate to it in your terminal
 3. ``` cd react-app```
