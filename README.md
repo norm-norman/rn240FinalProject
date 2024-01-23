@@ -1,6 +1,6 @@
 # Straight Path: The Game
 Final Project for CAS RN 340\
-Gennifer Norman
+Norm Norman
 
 ## Overview
 
